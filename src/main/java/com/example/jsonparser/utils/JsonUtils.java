@@ -1,4 +1,4 @@
-package com.example.jsonparser;
+package com.example.jsonparser.utils;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
