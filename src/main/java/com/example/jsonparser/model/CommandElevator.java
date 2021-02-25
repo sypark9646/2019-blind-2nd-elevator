@@ -13,13 +13,4 @@ public class CommandElevator {
     private final Command command;
     @JsonProperty("call_ids")
     private final List<Integer> call_ids;
-
-    @Override
-    public String toString() {
-        return "{\n"
-            + "      \"elevator_id\": " + elevator_id + ","
-            + "      \"command\": " + "\"" + command + "\"" + ","
-            + "      \"call_ids\": " + call_ids
-            + "    }";
-    }
 }

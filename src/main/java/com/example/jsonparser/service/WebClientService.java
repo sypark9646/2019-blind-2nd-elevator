@@ -11,6 +11,8 @@ import com.example.jsonparser.dto.CommandListDto;
 import com.example.jsonparser.dto.ElevatorStatusDto;
 import com.example.jsonparser.dto.OnCallsResponseDto;
 import com.example.jsonparser.model.CommandElevator;
+
+import com.example.jsonparser.utils.JsonUtils;
 import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Mono;
 
@@ -48,14 +50,14 @@ public class WebClientService {
         String onCallsEndpoint = "/action";
         CommandListDto commandList = new CommandListDto(commands);
         log.info("token = " + token);
-        log.info(commandList.toString());
+        log.info(JsonUtils.toJson(commandList));
 
         // TODO: 하드코딩 영역 object mapping으로 대체
         return webClient.post()
             .uri(onCallsEndpoint)
             .contentType(MediaType.APPLICATION_JSON)
             .header("X-Auth-Token", token)
-            .body(BodyInserters.fromValue(commandList.toString()))
+            .body(BodyInserters.fromValue(JsonUtils.toJson(commandList)))
             .retrieve()
             .bodyToMono(ElevatorStatusDto.class);
     }

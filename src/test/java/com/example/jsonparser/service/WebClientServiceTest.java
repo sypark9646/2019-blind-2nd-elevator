@@ -40,7 +40,6 @@ public class WebClientServiceTest {
     void actionAPI(){
         ElevatorStatusDto startResponseDto = webClientService.getToken(1, 1, 1).block();
         CommandElevator commandElevator = new CommandElevator(0, Command.STOP, List.of(0));
-        System.out.println(commandElevator);
         Mono<ElevatorStatusDto> elevatorStatusDto = webClientService.action(startResponseDto.getToken(), List.of(commandElevator));
         System.out.println(elevatorStatusDto.block());
     }
